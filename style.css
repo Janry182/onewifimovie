@@ -1,0 +1,97 @@
+#navbar,#video-popup{justify-content:center}
+body{margin:0;font-family:Arial,sans-serif;background-color:#000;color:#fff}
+#video-popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);align-items:center;z-index:9999}
+#video-container{position:relative;width:90%;max-width:480px;background:#000;padding-bottom:80px}
+#video-popup video{width:100%;height:auto}
+#close-btn,#fullscreen-btn{position:absolute;bottom:10px;background:0 0;border:2px solid #fff;color:#fff;font-size:16px;cursor:pointer;z-index:1;padding:5px 10px;border-radius:5px;text-align:center}#fullscreen-btn{right:10px;bottom:46px}
+#close-btn{right:10px}
+#bitrate-selector{position:absolute;bottom:13px;left:19px;background:#fff;border:none;padding:5px;z-index:1}
+#bitrate-selector option{padding:5px}
+#volume-controls{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;z-index:1}
+#volume-slider{width:80px;margin:0 5px}
+#volume-minus,#volume-plus{background-color:#007bff;color:#fff;border:none;border-radius:5px;width:30px;height:30px;cursor:pointer;font-size:16px}
+#navbar a,.live-status{color:#fff;border-radius:5px}
+#navbar{display:flex;background-color:#007bff;padding:10px;color:#fff}
+#navbar a{text-decoration:none;padding:10px 20px;font-weight:700}
+#navbar a.active,.filter-btn.active{background-color:#0056b3}
+#channel-list-movies,#channel-list-tv{margin:20px;display:none;list-style-type:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:20px}
+.channel-item{text-align:center;position:relative}
+.channel-logo{display:inline-block;width:100%;height:100px;border:2px solid #000;border-radius:10px;padding:15px;background-color:#fff;box-sizing:border-box;margin-bottom:5px}
+.alternate,.live-status{position:absolute;top:-12px;right:-10px;background-color:#3d4044;padding:3px 8px;font-weight:700}
+.live-status{border:2px solid #00f0ff}
+.alternate{color:#f7ff00;border-radius:5px;border:2px solid #00f0ff}
+.filter-btn,.watch-now-btn{background-color:#007bff;color:#fff;cursor:pointer}
+.live-status.live{color:#0f0}
+.live-status.offline{color:red}
+.channel-logo img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+.watch-now-btn{display:block;width:100%;margin:0;padding:5px;border:none;border-radius:5px;font-size:17px;text-align:center}
+#filter-buttons{display:flex;justify-content:center;margin:10px 0}
+.filter-btn{border:none;border-radius:5px;padding:10px 20px;margin:0 5px}
+@media (max-width:600px){#close-btn,#fullscreen-btn{font-size:14px}#fullscreen-btn{right:10px;bottom:46px}#close-btn{right:10px}#channel-list-movies,#channel-list-tv{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}.channel-logo{height:80px}.watch-now-btn{font-size:17px;padding:3px}}
+.watch-now-btn2{
+	background-color:#007bff;
+	color:#fff;
+	cursor:pointer;
+	display:block;
+	width:100%;
+	margin:0;
+	padding:5px;
+	border:none;
+	border-radius:5px;
+	font-size:17px;
+	text-align:center;
+}
+
+#close-btn2,#fullscreen-btn2{position:absolute;bottom:10px;background:0 0;border:2px solid #fff;color:#fff;font-size:16px;cursor:pointer;z-index:1;padding:5px 10px;border-radius:5px;text-align:center}
+#fullscreen-btn2{right:10px;bottom:46px}
+#close-btn2{right:10px}
+.youtube-player-overlay{
+	position: fixed;
+	inset:0;
+	background: rgba(0,0,0,0.8);
+	opacity: 0;
+	pointer-events: none;
+	align-items:center;
+	z-index:9999;
+
+	/*top:0;
+	left:0;
+	width:100%;
+	height:100%;*/
+}
+.youtube-player-overlay.active{
+	opacity: 1;
+	pointer-events: auto;
+	
+}
+.youtube-player-popup{
+	position: fixed;
+	width: 80%;
+	background: red;
+	left: 50%;
+	transform: translate(-50%, -100%);
+	transition: all 400ms ease;
+	top: 120px;
+}
+.youtube-player-popup iframe{
+	width: 100%;
+	aspect-ratio: 16/9;
+	
+}
+.youtube-player-overlay.active .youtube-player-popup{
+	transform: translate(-50%, 0);
+	position:relative;
+	width:90%;
+	max-width:480px;
+	background:#000;
+	padding-bottom:80px;
+
+}
+.youtube-link{
+	cursor: pointer;
+	transition: all 400ms ease;
+
+}
+.youtube-link:hover{
+	background: gray;
+}
