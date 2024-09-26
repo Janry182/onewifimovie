@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV Player</title>
+  <link rel="stylesheet" href="style.css">
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+</head>
+<body>
+
+<div id="navbar">
+    <a href="#" id="tv-channels-link" class="active">TV Channels</a>
+    <a href="#" id="movie-channels-link">Movie Channels</a>
+</div>
+
+<div id="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="live">Live</button>
+        <button class="filter-btn" data-filter="offline">Offline</button>
+        <button class="filter-btn" data-filter="limited">Limited</button>
+</div>
+
+<div id="video-popup">
+    <div id="video-container">
+	    <button id="fullscreen-btn">Fullscreen</button>
+        <button id="close-btn">Close</button>
+        <video id="video" controls></video>
+        <select id="bitrate-selector">
+            <option value="auto">Auto</option>
+        </select>
+        <div id="volume-controls">
+            <button id="volume-minus">-</button>
+            <input type="range" id="volume-slider" min="0" max="100" value="100" />
+            <button id="volume-plus">+</button>
+        </div>
+    </div>
+</div>
+
+<div id="channel-list-tv">
+    <div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxnDcKBkaee3kQT5jBOZc3uhyQa7X29pLYjA&s" alt="Channel 1">
+        </div>
+        <button class="watch-now-btn" data-stream="http://example.com/stream1.m3u8" data-href="https://www.youtube.com/embed/live_stream?channel=UCKL5hAuzgFQsyrsQKgU0Qng&autoplay=1">Watch Now</button>
+    </div>
+    <div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/ABS-CBN_%282013%29.svg/1200px-ABS-CBN_%282013%29.svg.png" alt="Channel 1">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="http://example.com/stream1.m3u8" data-href="https://morning-a2z-heart-a9cd.pl4y3r.workers.dev">Watch Now</button>
+    </div>
+    <div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/TV5_%28Philippines%29_logo.svg/1024px-TV5_%28Philippines%29_logo.svg.png" alt="Channel 3">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/tv5_qp.m3u8">Watch Now</button>
+    </div>
+    <div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/PBA_Rush_logo.png/220px-PBA_Rush_logo.png" alt="Channel 1">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="http://example.com/stream1.m3u8" data-href="https://twilight-pba-rush-leaf-d8d6.pl4y3r.workers.dev/">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Cartoon_Network_2010_logo.svg/1200px-Cartoon_Network_2010_logo.svg.png" alt="Channel 3">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cdn1.skygo.mn/live/disk1/Cartoon_Network/HLS-FTA/Cartoon_Network.m3u8">Watch Now</button>
+    </div>
+    <div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://img.mytfc.com/cmsroot/abscms/media/mytfctv/channels/anc/anc-logo.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://ancglobal-abscbn-ono.amagi.tv/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/America%27s_Got_Talent_2015_logo.png/1200px-America%27s_Got_Talent_2015_logo.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://dhkq1p9audihq.cloudfront.net/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/American_Idol_logo.svg/1280px-American_Idol_logo.svg.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://d2h3esqi6ab3e7.cloudfront.net/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/MYX_new_logo.svg" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://myxnola-abscbn-ono.amagi.tv/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2018_Travel_Channel_logo.svg/1200px-2018_Travel_Channel_logo.svg.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://dplus.gammacdn.workers.dev/videos/110.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://www.nicepng.com/png/detail/223-2235574_1-hbo-http-hbo-plus-logo-png.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="http://170.254.18.106/HBO_PLUS/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Animax_logo.svg" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://z88.ubtvfans.com/live/rx1/59/cb49382c9457a5f3586f9e0635594838/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Hap-XDEqUXHU5DDt4Mo0iULj3P2AyS9onQ&s" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cdn-apse1-prod.tsv2.amagi.tv/linear/amg00718-outdoorchannela-outdoortvnz-samsungnz/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/KBS_World_%282009%29.svg/2560px-KBS_World_%282009%29.svg.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://kbsworld-ott.akamaized.net/hls/live/2002341/kbsworld/master.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://w7.pngwing.com/pngs/7/1013/png-transparent-logo-hbo-hd-scalable-graphics-design-blue-angle-text-thumbnail.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/hbohd_qp.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/One_Sports_logo.svg" alt="Channel 4">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="http://user.scalecdn.co:8080/live/BK012ee1/993c950e60/546796.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://static.wikia.nocookie.net/logopedia/images/5/5c/One_Sports_plus_logo.png" alt="Channel 4">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="hhttp://vo01.mohdtv.com:8880/live/ALLChannels681def0087c7/81216685/66827.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/40/Radyo5truefmlogo.webp/600px-Radyo5truefmlogo.webp.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://qp-pldt-live-grp-05-prod.akamaized.net/out/u/radyo5_qp.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/CLTV_logo.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://live.cltv36.tv:5443/LiveApp/streams/live.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/40/GTV_Philippines_Logo_Vector.svg/577px-GTV_Philippines_Logo_Vector.svg.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://live.cltv36.tv:5443/LiveApp/streams/live.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Fashion_TV_logo.svg/1280px-Fashion_TV_logo.svg.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://fashiontv-fashiontv-1-eu.rakuten.wurl.tv/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/TeleRadyo_Serbisyo_logo.svg/1200px-TeleRadyo_Serbisyo_logo.svg.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://teleradyo-abscbn-ono.amagi.tv/playlist720_p.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://1000logos.net/wp-content/uploads/2021/04/CNN-logo.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cnn-cnninternational-1-eu.rakuten.wurl.tv/f93b9a949a4a8651dd5a2f42e3a2b6f9.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/JGSLqA6.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://199211.global.ssl.fastly.net/643cc12aa824db4374021c8c/live_95f6ac80dd6511ed9d08b12be56ae55e/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.pinimg.com/736x/20/f8/53/20f853787e15c584b40cb92aee225029.jpg" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://amg01334-beinsportsllc-beinxtra-localnow-kcy6r.amagi.tv/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Cartoonito_-_Logo_2021.svg/800px-Cartoonito_-_Logo_2021.svg.png?20230518212149" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cdn1.skygo.mn/live/disk1/Boomerang/HLS-FTA/Boomerang.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://pbs.twimg.com/profile_images/1283856018099798022/5ectikba_400x400.jpg" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cdn4.skygo.mn/live/disk1/BBC_News/HLSv3-FTA/BBC_News.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/F8ZM25a.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cdn3.wowza.com/1/ZVBYYXFLLzE0c3NC/Qk1FMURC/hls/live/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnjr9MJHtq2QGh7DTI5W6b-NtZldzmD1OhWVa_8GCKIlEx-DLjOaKDNcCK-hy4pEd8QBk&usqp=CAU" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cdn3.wowza.com/1/QmVNUVhTNTZSS3Uz/YWQ0aHpi/hls/live/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/8cvikOo.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="http://45.32.115.103/live/livestream/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/JGSLqA6.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://199211.global.ssl.fastly.net/643cc12aa824db4374021c8c/live_95f6ac80dd6511ed9d08b12be56ae55e/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/tY7IJva.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="http://cdn-kanal10.crossnet.net:1935/kanal10/kanal10asia/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBNk0DbDPPxLMlavJN8i58348q279VAd2I_xIltN4Duds-GDLjfiIN1m9TpFyQ5zqjBmI&usqp=CAU" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://1180885077.rsc.cdn77.org/HLS/BOXINGTV_v0.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/f/f0/Discovery-asia.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cdn1.skygo.mn/live/disk1/Discovery_Asia/HLS-FTA/Discovery_Asia-avc1_299968=5.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/FRsRXRR.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://ott.tv5monde.com/Content/HLS/Live/channel(seasie)/variant.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://cdn-images.rtp.pt/common/img/channels/logos/color/horizontal/120-344318101410.png?v=3&w=860" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="http://210.210.155.37/qwr9ew/s/s38/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/o0eevnb.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://zindisorani.zaroktv.com.tr/hls/stream.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://notflix.in/info/uploads/tv_image/nba-tv-philippines.png" alt="Channel 1">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="http://example.com/stream1.m3u8" data-href="https://billowing-nba-ph-mountain-147c.pl4y3r.workers.dev/">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://banner2.cleanpng.com/20180430/dke/avdgkdi8q.webp" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://streams2.sofast.tv/ptnr-stirr/genre-Travel/lang-English/ctgr-Travel/title-4K-TRAVEL-TV-ENG/sofastplayout/33c31ac4-51fa-46ae-afd0-0d1fe5e60a80_0_HLS/master.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://3abnkids.tv/img/3ABN-KIDS-LOGO.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Logo_ESR.png/640px-Logo_ESR.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://eyeonesports.com/ES2RA-628g.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://www.sports-first.co.nz/template/user/lafusidlbfjkds/images/logo.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://d4ddgdmj1cvnm.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/STIRR-MuxIP-SportsFirstTV/409.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/fn3oz0ihbtp8pkhpr3jh" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://sportsgrid-tribal.amagi.tv/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://logos-world.net/wp-content/uploads/2023/09/ABC-News-Emblem.png" alt="Channel 4">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="https://content.uplynk.com/channel/3324f2467c414329b3b0cc5cd987b6be.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/OneNewsPH_logo.svg/1200px-OneNewsPH_logo.svg.png" alt="Channel 4">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="http://tv14s.xyz:8080/live/X5xRz0/944877/101774.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/f/f6/Pinoy_Box_Office_logo.png" alt="Channel 4">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="http://user.scalecdn.co:8080/live/BK012ee1/993c950e60/567735.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://cdn.onlineradiobox.com/img/l/8/63288.v7.png" alt="Channel 4">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="https://stream.gmanews.tv/ioslive/livestream/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/The_Filipino_Channel_%28TFC%29_logo.png" alt="Channel 4">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="http://tv14s.xyz:8080/live/36820828/31222528/101823.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/gFcpYSJ.png" alt="Channel 1">
+        </div>
+        <button class="watch-now-btn" data-stream="http://example.com/stream1.m3u8" data-href="https://www.youtube.com/embed/live_stream?channel=UC3XaG-7UVi2vD8ZZEMNnnpw&autoplay=1">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://yt3.googleusercontent.com/ru7PnoJsLdba3X0yMrOh3BBFb3yU7D1deI-1IO5SoKd5WY23sYHvhyV0MhJzxBSeXIs7E-4pYw=s160-c-k-c0x00ffffff-no-rj" alt="Channel 1">
+        </div>
+        <button class="watch-now-btn" data-stream="http://example.com/stream1.m3u8" data-href="https://www.youtube.com/embed/live_stream?channel=UCcTiBX8js_djhSSlmJRI99A&autoplay=1">Watch Now</button>
+    </div>
+    <!-- Add more TV channels here -->
+</div>
+
+<div id="channel-list-movies">
+    <div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Fox_Action_Movies_logo.svg/800px-Fox_Action_Movies_logo.svg.png?20201215011903" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://bec-action-1-us.tcl.wurl.tv/playlist.m3u8">Watch Now</button>
+    </div>
+    <div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbBYo2ubjArPp-3gqEU4FEtkJWSVNuIxyP7pUHDdC3yzra9wwD6tbAI-JaDx4SyazVYQ" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://rakuten-actionmovies-1-eu.rakuten.wurl.tv/2000.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://vcz-ktest2-cloud-vodlix-com.b-cdn.net/u/ktest2/files/thumbs/2024/02/09/17074387978Cn1LaRusH-1920x1080-IufT5qri.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://d1b5mlajbmvkjv.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/UDU-DistroTV/145.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://static.wikia.nocookie.net/tvfanon6528/images/d/d2/Cinema_One_%282013-.n.v.%29.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cinemaone-abscbn-ono.amagi.tv/index.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkUCls72g1ivziaiQDfI5I1OhER-imYZNBoQ&s" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cinemo-abscbn-ono.amagi.tv/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://10play.com.au/ip/s3/2022/12/05/f67e539ee7ca067d20f1d406a196abd8-1202911.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://moviesphereuk-samsunguk.amagi.tv/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqzbmrbZiG89sw90LH84RZlr_lnmoCh-qPco62RQVBEXefVR1uo0j46L2XtaGhtjkYzQM" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://cdn.klowdtv.net/803B48A/n1.klowdtv.net/live1/smc_720p/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/NCqZdaL.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://mediaserver.abnvideos.com/streams/abnbiblemovies.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/aESdqiB.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://origin3.afxp.telemedia.co.za/PremiumFree/afriwoodbb/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://i.imgur.com/IkYZQ9S.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://dai2.xumo.com/amagi_hls_data_xumo1212A-redboxamericanclassics/CDN/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://image.roku.com/developer_channels/prod/16f5571a82819e8992a748c70b256cbe63105f4b546b73d129668dc2cb701d91.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://amhorstream.com/playlist/amhor/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://classicmoviesandtv.com/images/channels/tv_movie_classics.png" alt="Channel 4">
+        </div>
+		<span class="live-status">Checking...</span>
+        <button class="watch-now-btn" data-stream="https://30a-tv.com/feeds/pzaz/30atvmovies.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2022/04/00/6266d729bf7b0.png" alt="Channel 4">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="https://7732c5436342497882363a8cd14ceff4.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/Plex_NewMovies/playlist.m3u8">Watch Now</button>
+    </div>
+	<div class="channel-item">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/2/22/Sari-Sari_Channel_logo.png" alt="Channel 4">
+        </div>
+		<div class="alternate">Limited</div>
+        <button class="watch-now-btn" data-stream="http://tv14s.xyz:8080/live/z5hs1N/523413/101824.m3u8">Watch Now</button>
+    </div>
+    <!-- Add more Movie channels here -->
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="script.js"></script>
+  <script src="script2.js"></script>
+  <script src="script3.js"></script>
+</body>
+</html>
