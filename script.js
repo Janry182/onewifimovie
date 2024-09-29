@@ -81,12 +81,7 @@ const videoPopup = document.getElementById('video-popup');
                         video.play();
                     });
                 }
-		else if (video.canPlayType('application/x-mpegURL')) {
-                    video.src = streamUrl;
-                    video.addEventListener('loadedmetadata', function () {
-                        video.play();
-                    });
-                } 
+		
 		
 		else {
                     alert('Your browser does not support HLS streaming.');
